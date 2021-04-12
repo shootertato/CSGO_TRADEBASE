@@ -38,7 +38,7 @@ router.post('/register', (req, res) =>{
         password:password
     })
     return newUser.save()
-    .then(user => res.send(user))
+    .then(user => res.send("El registro has ido completado, ves al login aqui debajo"))
     .catch(console.error) 
 })    
 

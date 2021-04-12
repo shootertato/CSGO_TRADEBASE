@@ -10,7 +10,7 @@ async function RegisterUser(credentials) {
         },
         body: JSON.stringify(credentials)
     })
-    .then(data => data.json())
+    .then(data => data.json()) 
 }
 
 export default function Register({ setToken }) {
@@ -25,7 +25,8 @@ export default function Register({ setToken }) {
             email,
             password
         });
-        setToken(token);
+
+        setToken(token); 
     }
 
   return (

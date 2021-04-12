@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const Post = require('../models/post')
 const verifyToken = require('../client/src/components/Users/verifyToken')
-const { default: Users } = require('../client/src/components/Users/Users')
+const User = require('../models/users') 
 const postRouter = new Router()
 
 
@@ -36,7 +36,7 @@ postRouter.get('/posts/:id', (req, res) =>{
 //Crea un post nuevo en la base de datos
 postRouter.post('/newpost', verifyToken,  (req, res) =>{
     const {body : { information, status,  tradelink, date}, userId} = req
-   /*  try{ */
+      try{  
     const newPost = new Post({
         owner: userId, 
         information: information,
@@ -44,10 +44,7 @@ postRouter.post('/newpost', verifyToken,  (req, res) =>{
         tradelink: tradelink, 
         date: date  
     })
-    return newPost.save()
-    .then(post => res.send(post))
-    .catch(console.error) 
-   /*  User.findById(userId, (error, user)=>{
+     User.findById(userId, (error, user)=>{
         if(error){
             return res.status(400).send("Ha ocurrido un error");
         }
@@ -63,7 +60,7 @@ postRouter.post('/newpost', verifyToken,  (req, res) =>{
 }
     catch(error){
         return res.status(400).send("Ha ocurrido un error");
-    } */
+    } 
 })  
 
 // Modifica los datos

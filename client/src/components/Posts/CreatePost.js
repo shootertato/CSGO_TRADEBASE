@@ -45,6 +45,12 @@ const NewPost = (props) => {
   return (
     <div>
       <h1 className="crearpost">Crea un anuncio de intercambio</h1>
+      <div>
+        <p>En informacion tienes que poner la skin que tienes y despues la que quieres conseguir.</p>
+        <p>Ejemplo:</p>
+        <p>Tengo un Ak-47| Frontside Misty(Minimal Wear) y quiero una Ak-47| Redline(Minimal Wear) </p>
+      </div>
+      
 
       <form onSubmit={(e)=> createPost(e)}>
         <p>Information:</p>

@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Skins from './components/Skins/Skin';
 import Posts from './components/Posts/Posts';
-import Users from './components/Users/Users';
+import Users from './components/Users/Users'; 
 import Chats from './components/Chat/Chat';
 import Login from './components/Users/Login';
 import Register from './components/Users/Register';

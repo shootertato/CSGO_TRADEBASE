@@ -18,7 +18,7 @@ const NavBar = (props) => {
 
     return(
         <div className="App">
-    <ReactBootStrap.Navbar  fixed="top" collapseOnSelect expand="xl" bg="dark" variant="dark">
+    <ReactBootStrap.Navbar   collapseOnSelect expand="xl" bg="dark" variant="dark">
   <ReactBootStrap.Navbar.Brand>CSGO-TRADEBASE</ReactBootStrap.Navbar.Brand>
   <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">

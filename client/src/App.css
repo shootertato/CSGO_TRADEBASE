@@ -104,3 +104,8 @@ div.users{
   margin: 15% auto;
 }
 
+/* Mi perfil */
+
+p.titulo{
+  font-size: 40px;
+}

@@ -6,12 +6,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const Users = () => {
-    const [users, setUsers] = useState();         
+    const [users, setUsers] = useState(null);     
+    
+    console.log(users)
 
         useEffect(() => {
             const token = localStorage.getItem(ACCES_TOKEN_NAME)
             console.log(token)
-            axios.get(`http://localhost:5000/user/perfil`, {
+            axios.get(`http://localhost:5000/users/perfil`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
@@ -21,33 +23,43 @@ const Users = () => {
     
                 })
                 .catch(err => {
-                    console.log(err.response);
+                    console.log(err.response.data);
                 }
                 );
         }, []);
     
 
-
-    return (
+    
+    return(
         <div>
             {users &&
-                users.map((item, index) =>(
-                    <div key={index} className="users">
-                    <div>
-                        <p className="username">{item.username}</p>
-                    </div>
-                    <div>
-                        {item.post}
-                    </div>
-                    </div>
-                )
-                    
-                )
-                
-            }
+                <div> 
+                   
+                         <p className="titulo">Posts de {users.username}</p>
+                                       
+                    {users.posts.map(item=>{
+                        return(
+                            <div>
+                                     <div class="card-body" className="posts">                  
+                            <p className="poststatus">{item.status}</p>
 
+                            <p class="card-text" className="postinformation">{item.information}</p>
+
+                            <p class="card-text" className="postdate">{item.date}</p>
+
+                             <a class="btn btn-primary" href={item.tradelink}>Enviar oferta</a>
+
+                            </div>
+                            </div> 
+                        )
+                    })
+                    
+                    }
+                    </div>
+                   
+
+            }
         </div>
-        );
-    };
-             
+    )
+    }
 export default Users;
