@@ -8,12 +8,15 @@ import Login from './components/Users/Login';
 import Register from './components/Users/Register';
 import NewPost from './components/Posts/CreatePost';
 import Navbar from './components/Navbar';
+import Error404 from './components/error404/Error404';
+import Modify from './components/Posts/ModificarPost';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+
 
 
 
@@ -33,6 +36,8 @@ function App() {
           <Route path="/skins" component={Skins}/>
           <Route path="/posts" component={Posts}/>
           <Route path="/newpost" component={NewPost}/>
+          <Route path="/user/post/:id" component={Modify}/>
+          <Route component={Error404} />
         </Switch>
       
     </Router>

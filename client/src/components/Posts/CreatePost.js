@@ -45,10 +45,10 @@ const NewPost = (props) => {
   return (
     <div>
       <h1 className="crearpost">Crea un anuncio de intercambio</h1>
-      <div>
-        <p>En informacion tienes que poner la skin que tienes y despues la que quieres conseguir.</p>
+      <div className="tutorial">
+        <p className="textotutorial">En informacion tienes que poner la skin que tienes y despues la que quieres conseguir, en status elegir el estado del intercambio, poner el tradelink y la fecha </p>
         <p>Ejemplo:</p>
-        <p>Tengo un Ak-47| Frontside Misty(Minimal Wear) y quiero una Ak-47| Redline(Minimal Wear) </p>
+        <p className="textotutorial">Tengo un Ak-47| Frontside Misty(Minimal Wear) y quiero una Ak-47| Redline(Minimal Wear) </p>
       </div>
       
 
@@ -75,7 +75,7 @@ const NewPost = (props) => {
         <input name="date" type="date" onChange={handleChangeInput} />
 
         <p>
-          <button>Crear anuncio</button>
+          <button className="btn btn-primary">Crear anuncio</button>
         </p>
         
 

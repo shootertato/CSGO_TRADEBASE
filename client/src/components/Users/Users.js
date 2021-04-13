@@ -5,10 +5,12 @@ import { withRouter, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
+
 const Users = () => {
     const [users, setUsers] = useState(null);     
     
-    console.log(users)
+    
+    
 
         useEffect(() => {
             const token = localStorage.getItem(ACCES_TOKEN_NAME)
@@ -23,7 +25,7 @@ const Users = () => {
     
                 })
                 .catch(err => {
-                    console.log(err.response.data);
+                    console.log(err);
                 }
                 );
         }, []);
@@ -36,6 +38,7 @@ const Users = () => {
                 <div> 
                    
                          <p className="titulo">Posts de {users.username}</p>
+                         
                                        
                     {users.posts.map(item=>{
                         return(
@@ -49,13 +52,18 @@ const Users = () => {
 
                              <a class="btn btn-primary" href={item.tradelink}>Enviar oferta</a>
 
+                             
+
                             </div>
                             </div> 
                         )
                     })
                     
                     }
-                    </div>
+                     
+
+
+                </div>
                    
 
             }

@@ -64,39 +64,53 @@ postRouter.post('/newpost', verifyToken,  (req, res) =>{
 })  
 
 // Modifica los datos
-postRouter.patch('/posts',  verifyToken, function(req, res) {
+postRouter.put('/user/post/:id',  verifyToken, function(req, res) {
     const body = req.body;
-    Post.findOneAndUpdate({ _id: body._id }, {
+    const {params: {id}} = req
+
+    Post.findByIdAndUpdate( id, {$set: body} , {
          //indica lo que se va a modificar
-            $set: req.body
+           /*  $set: req.body */
         },
         function(error, info) {
             if (error) {
-                res.json({
+                res.send({
                     resultado: false,
                     msg: 'No se ha podido modificar los datos del post.',
                     err
                 });
             } else {
-                res.json({
-                    resultado: true,
-                    info: info
-                })
+                res.send("El post se ha modifcado correctamente")
+                console.log(info)
             }
         }
     )
 });
 
 //elimina un usuario de la base de datos
-postRouter.delete('/posts/:id',  verifyToken, (req,res) =>{
-    const {params: {id}} = req
 
-    post.findByIdAndRemove(id, (err, post) =>{
-        if (err){
-            res.status(500).send(`Error al eliminar el post: ${err}`)
-        }
-        res.json(post)
-    })
+
+postRouter.delete('/deletepost/:id', verifyToken, (req, res) => {
+    const { params: { id }, userId } = req
+    return User.findById(userId)
+        .then(user => {
+            console.log(user)
+            const index = user.posts.indexOf(id)
+            console.log(index)
+            if (index == -1) {
+               return res.status(401).send('Este usuario no tiene permisos para borrar el post indicado')
+            }
+            else {
+                return User.findByIdAndUpdate(userId, { $pull: { posts: id } })
+                    .then(doc => {
+                        return Post.findByIdAndRemove(id).lean()
+                            .then(post => res.status(200).send('Post eliminado'))
+                            .catch(error => res.status(400).send('Ha ocurrido un error'))
+                    })
+                }
+            })
+
+        .catch(error => res.send('Se ha producido un error'))
 })
 
 module.exports = postRouter
