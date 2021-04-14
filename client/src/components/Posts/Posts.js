@@ -18,22 +18,9 @@ const Posts = (props) => {
     props.history.push("/newpost");
   };
 
-  const handleDeletePost = (id) => {
-    axios.delete(`http://localhost:5000/deletepost/` + id , {
-        headers: {
-            authorization: `Bearer ${localStorage.getItem('jwt-token')}`
-        }
-    })
-        .then(response => {
-            // setUser(response.data)
-            console.log(response.data)
-            redirectToPost();
-        })
-      }
+  
 
-    const redirectToPost = () => {
-        props.history.push("/posts");
-      };
+   
   return (
     <div>
       <h1>Posts</h1>
@@ -63,13 +50,11 @@ const Posts = (props) => {
                 <p class="card-text" className="postdate">{item.date}</p>
 
                 <a class="btn btn-primary" href={item.tradelink}>Enviar oferta</a>
-                <p>
-                  <Link to={'/user/post/' + item._id }>Modificar post</Link>
-                </p>
+                
 
                 
 
-                <button class="btn btn-danger" onClick={() => handleDeletePost(item._id)}>Eliminar post</button>
+                
 
 
               </div>

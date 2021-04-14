@@ -39,3 +39,5 @@ Tecnologias usadas en este proyecto:
 - Añadir un chat.
 - Añadir una pagina para seleccionar las skins mediante iconos.
 - Añadir deplegable debajo de los iconos de las skins para indicar el float/desgaste de la misma
+- Añadir mas mensajes al usuario(Cuando las cosas funcionan o no).
+- Añadir paginación o un filtro para cuando haya más posts.
