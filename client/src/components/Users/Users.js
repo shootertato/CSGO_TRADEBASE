@@ -15,7 +15,7 @@ const Users = (props) => {
         useEffect(() => {
             const token = localStorage.getItem(ACCES_TOKEN_NAME)
             console.log(token)
-            axios.get(`/users/perfil`, {
+            axios.get(`/api/users/perfil`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
@@ -31,7 +31,7 @@ const Users = (props) => {
         }, []);
 
         const handleDeletePost = (id) => {
-            axios.delete(`/deletepost/` + id , {
+            axios.delete(`/api/deletepost/` + id , {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('jwt-token')}`
                 }

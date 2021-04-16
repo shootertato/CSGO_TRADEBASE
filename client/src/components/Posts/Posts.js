@@ -9,7 +9,7 @@ const Posts = (props) => {
 
 /* console.log(posts); */
   useEffect(() => {
-    axios.get("/posts").then((response) => {
+    axios.get("/api/posts").then((response) => {
       setPosts(response.data);
     });
   });

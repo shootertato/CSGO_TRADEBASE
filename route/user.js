@@ -4,7 +4,7 @@ const verifyToken = require('../client/src/components/Users/verifyToken')
 const router = new Router()
 
 //Muestra los datos 
-router.get('/users',  verifyToken, (req, res) =>{
+router.get('/api/users',  verifyToken, (req, res) =>{
     User.find({}, (error, users) => {
         if(error){
           res.status(400).send('Ha ocurrido un error.')
@@ -15,7 +15,7 @@ router.get('/users',  verifyToken, (req, res) =>{
   }) 
 
 //Perfil del usuario
-router.get(`/users/perfil/`, verifyToken, (req, res) =>{
+router.get(`/api/users/perfil/`, verifyToken, (req, res) =>{
    const id = req.userId
     User.findById(id)
     .populate('posts')
@@ -30,7 +30,7 @@ router.get(`/users/perfil/`, verifyToken, (req, res) =>{
 
   
 // crea un nuevo usuario en la base de datos
-router.post('/register', (req, res) =>{
+router.post('/api/register', (req, res) =>{
     const {body : {username, email, password}} = req
     const newUser = new User({
         username:username,
@@ -43,7 +43,7 @@ router.post('/register', (req, res) =>{
 })    
 
 // Modifica los datos
-router.patch('/users',  verifyToken,  function(req, res) {
+router.patch('/api/users',  verifyToken,  function(req, res) {
     const body = req.body;
     User.findOneAndUpdate({ _id: body._id }, {
          //indica lo que se va a modificar
@@ -67,7 +67,7 @@ router.patch('/users',  verifyToken,  function(req, res) {
 });
 
 //elimina un usuario de la base de datos
-router.delete('/users/:id',   verifyToken, (req,res) =>{
+router.delete('/api/users/:id',   verifyToken, (req,res) =>{
     const {params: {id}} = req
 
     user.findByIdAndRemove(id, (err, user) =>{

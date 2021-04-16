@@ -6,7 +6,7 @@ const postRouter = new Router()
 
 
 //Muestra los datos 
-postRouter.get('/posts', (req, res) =>{
+postRouter.get('/api/posts', (req, res) =>{
     
     Post.find({})
         .populate(`owner`, `username`)
@@ -19,7 +19,7 @@ postRouter.get('/posts', (req, res) =>{
   }) 
 
   //Muestra los datos 
-postRouter.get('/posts/:id', (req, res) =>{
+postRouter.get('/api/posts/:id', (req, res) =>{
     const{params:{id}} = req;
     console.log(id)
     Post.findById(id)
@@ -34,7 +34,7 @@ postRouter.get('/posts/:id', (req, res) =>{
 
   
 //Crea un post nuevo en la base de datos
-postRouter.post('/newpost', verifyToken,  (req, res) =>{
+postRouter.post('/api/newpost', verifyToken,  (req, res) =>{
     const {body : { information, status,  tradelink, date}, userId} = req
       try{  
     const newPost = new Post({
@@ -64,7 +64,7 @@ postRouter.post('/newpost', verifyToken,  (req, res) =>{
 })  
 
 // Modifica los datos
-postRouter.put('/user/post/:id',  verifyToken, function(req, res) {
+postRouter.put('/api/user/post/:id',  verifyToken, function(req, res) {
     const body = req.body;
     const {params: {id}} = req
 
@@ -90,7 +90,7 @@ postRouter.put('/user/post/:id',  verifyToken, function(req, res) {
 //elimina un usuario de la base de datos
 
 
-postRouter.delete('/deletepost/:id', verifyToken, (req, res) => {
+postRouter.delete('/api/deletepost/:id', verifyToken, (req, res) => {
     const { params: { id }, userId } = req
     return User.findById(userId)
         .then(user => {

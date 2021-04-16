@@ -11,7 +11,7 @@ console.log(modificarPost)
     const editarPost = (event) => {
         event.preventDefault()
 
-        axios.put(`/user/post/` + props.match.params.id ,modificarPost, {
+        axios.put(`/api/user/post/` + props.match.params.id ,modificarPost, {
             headers: {
                 'Content-Type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('jwt-token')}`
