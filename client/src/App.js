@@ -28,7 +28,7 @@ function App() {
         <Navbar />
         
         <Switch>
-          <Route path="/" exact component={Posts}/>
+          <Route path="/" exact component={Login}/>
           <Route path="/login" component={Login}/>
           <Route path="/register" component={Register}/>
           <Route path="/users/perfil" component={Users}/>
