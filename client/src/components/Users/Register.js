@@ -3,7 +3,7 @@ import logo from '../assets/logo.svg';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 async function RegisterUser(credentials) {
-    return fetch('http://localhost:5000/register', {
+    return fetch('/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

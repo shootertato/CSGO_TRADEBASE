@@ -15,7 +15,7 @@ const Users = (props) => {
         useEffect(() => {
             const token = localStorage.getItem(ACCES_TOKEN_NAME)
             console.log(token)
-            axios.get(`http://localhost:5000/users/perfil`, {
+            axios.get(`/users/perfil`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }
