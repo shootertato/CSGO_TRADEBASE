@@ -27,7 +27,7 @@ mongoose.connect(MONGODB_URL, {useUnifiedTopology: true, useNewUrlParser: true, 
     app.use(skinRouter)
     app.use(postRouter)
     app.use(chatRouter)
-})
+
 
 // formulario de login, verifica la pass escrita con la pass cifrada
 router.post('/login', async (req, res) =>{
@@ -67,7 +67,4 @@ if(process.env.NODE_ENV === "production"){
 
 const PORT = process.env.PORT;
 app,listen(PORT, () => console.log(`Server running on port ${PORT}`))
-/* app.listen(port, () =>{
-    console.log(`Servidor corriendo en el puerto ${port}`)
 })
- */
