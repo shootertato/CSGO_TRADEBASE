@@ -30,7 +30,7 @@ mongoose.connect(MONGODB_URL, {useUnifiedTopology: true, useNewUrlParser: true, 
 
 
 // formulario de login, verifica la pass escrita con la pass cifrada
-router.post('/login', async (req, res) =>{
+router.post('/api/login', async (req, res) =>{
     const user = await User.findOne({email: req.body.email})
 
     if(user){

@@ -62,7 +62,7 @@ const Login = (props) => {
         />
 
         <div className="iniciologin">
-          <button class="btn btn-primary" type="submit" onClick={submitLogin} className="boton">
+          <button className="btn btn-primary" type="submit" onClick={submitLogin} className="boton">
           Iniciar Sesión
         </button>
         </div>

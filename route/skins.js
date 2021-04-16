@@ -4,7 +4,7 @@ const verifyToken = require('../client/src/components/Users/verifyToken')
 const skinRouter = new Router()
 
 //Muestra los datos 
-skinRouter.get('/skins',  (req, res) => {
+skinRouter.get('/api/skins',  (req, res) => {
     Skin.find({}, (error, skins) => {
         if (error) {
             res.status(400).send('Se ha producido un error')
@@ -18,7 +18,7 @@ skinRouter.get('/skins',  (req, res) => {
 
 
 //Crea un skin nuevo en la base de datos
-skinRouter.post('/skins',   (req, res) =>{
+skinRouter.post('/api/skins',   (req, res) =>{
     const {body : {name, float, icon}, params:{id}} = req
     const newSkin = new Skin({
         owner: id,
@@ -32,7 +32,7 @@ skinRouter.post('/skins',   (req, res) =>{
 })
 
 // Modifica los datos
-skinRouter.patch('/skins',  function(req, res) {
+skinRouter.patch('/api/skins',  function(req, res) {
     const body = req.body;
     Skin.findOneAndUpdate({ _id: body._id }, {
          //indica lo que se va a modificar
@@ -56,7 +56,7 @@ skinRouter.patch('/skins',  function(req, res) {
 });
 
 //elimina una skin de la base de datos
-skinRouter.delete('/skins/:id',  (req,res) =>{
+skinRouter.delete('/api/skins/:id',  (req,res) =>{
     const {params: {id}} = req
 
     Skin.findByIdAndRemove(id, (err, skin) =>{
