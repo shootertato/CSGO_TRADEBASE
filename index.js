@@ -11,6 +11,7 @@ const {env:{MONGODB_URL}} = process;
 const jwt = require('jsonwebtoken');
 const {env:{SECRET}} = process;
 const cors = require("cors");
+const path = require('path');
 
 
 //acceso a las rutas  y su contenido
@@ -51,6 +52,18 @@ router.post('/login', async (req, res) =>{
 
 app.use(cors());
 app.use(express.json());
+
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join(__dirname, '/client/build')));
+
+    app.get('*', (req, res) =>{
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    })
+}else{
+    app.get('/', (req, res) =>{
+        res.send('Api running')
+    })
+}
 
 app.listen(port, () =>{
     console.log(`Servidor corriendo en el puerto ${port}`)

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "client": "cd client && npm start",
     "concu": "concurrently --kill-others-on-fail \"npm run dev\" \"npm run client \"",
     "inspect": "node inspect index.js",
