@@ -8,7 +8,7 @@ const Menu = () => {
     console.log(menu)
     useEffect(() => {
 
-        axios.get('http://localhost:5000/menu')
+        axios.get('/menu')
             .then(response => setMenu(response.data))
 
     }, [])

@@ -9,7 +9,7 @@ const Posts = (props) => {
 
 /* console.log(posts); */
   useEffect(() => {
-    axios.get("http://localhost:5000/posts").then((response) => {
+    axios.get("/posts").then((response) => {
       setPosts(response.data);
     });
   });

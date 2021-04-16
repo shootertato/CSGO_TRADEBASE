@@ -31,7 +31,7 @@ const Users = (props) => {
         }, []);
 
         const handleDeletePost = (id) => {
-            axios.delete(`http://localhost:5000/deletepost/` + id , {
+            axios.delete(`/deletepost/` + id , {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('jwt-token')}`
                 }

@@ -16,7 +16,7 @@ const Login = (props) => {
   const submitLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/login", { ...userLogin })
+      .post("/login", { ...userLogin })
       .then((response) => {
         setLoginCorrecto(response.data.message);
         localStorage.setItem(ACCES_TOKEN_NAME, response.data.token);
