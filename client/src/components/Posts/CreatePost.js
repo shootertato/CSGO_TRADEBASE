@@ -30,7 +30,7 @@ const NewPost = (props) => {
     const date = event.target.date.value;
     const newPost = {status, information, tradelink,  date};
 
-   axios.post("http://localhost:5000/newpost", newPost, {
+   axios.post("/newpost", newPost, {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${localStorage.getItem("jwt-token")}`,
